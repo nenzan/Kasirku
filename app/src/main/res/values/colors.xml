@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- New Combination Color -->
+    <color name="bluePrimary">#608cf7</color>
+    <color name="bluePrimaryDark">#2761ef</color>
+    <color name="blueGray">#ccd0d7</color>
+    <color name="accentOrange">#e89a50</color>
+    <color name="accentOrangeDark">#e86c2e</color>
+    
+</resources>
