@@ -16,10 +16,7 @@
             android:id="@+id/navLaporan"
             android:icon="@drawable/laporan_icon"
             android:title="Laporan" />
-        <item
-            android:id="@+id/navLogout"
-            android:icon="@drawable/logout_icon"
-            android:title="Logout" />
+
     </group>
 
     <item android:title="Communicate">
@@ -29,9 +26,9 @@
                 android:icon="@drawable/contact_icon"
                 android:title="Hubungi Kami" />
             <item
-                android:id="@+id/navHelp"
-                android:icon="@drawable/help_icon"
-                android:title="Bantuan" />
+                android:id="@+id/navLogout"
+                android:icon="@drawable/logout_icon"
+                android:title="Logout" />
         </menu>
     </item>
 
