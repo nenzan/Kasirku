@@ -6,15 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navDatabase"
-            android:icon="@drawable/database_icon"
             android:title="Database" />
         <item
             android:id="@+id/navTransaksi"
-            android:icon="@drawable/transaksi_icon"
             android:title="Transaksi" />
         <item
             android:id="@+id/navLaporan"
-            android:icon="@drawable/laporan_icon"
             android:title="Laporan" />
 
     </group>
@@ -23,11 +20,9 @@
         <menu>
             <item
                 android:id="@+id/navContactUs"
-                android:icon="@drawable/contact_icon"
                 android:title="Hubungi Kami" />
             <item
                 android:id="@+id/navLogout"
-                android:icon="@drawable/logout_icon"
                 android:title="Logout" />
         </menu>
     </item>

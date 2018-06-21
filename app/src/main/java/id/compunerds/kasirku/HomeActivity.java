@@ -14,11 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import id.compunerds.kasirku.fragment.DatabaseFragment;
-import id.compunerds.kasirku.fragment.KontakFragment;
-import id.compunerds.kasirku.fragment.LaporanFragment;
-import id.compunerds.kasirku.fragment.TransaksiFragment;
-
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -91,38 +86,15 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.navDatabase) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new DatabaseFragment()).commit();
-            getSupportActionBar().setTitle("Database");
-        } else if (id == R.id.navTransaksi) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new TransaksiFragment()).commit();
-            getSupportActionBar().setTitle("Transaksi");
-        } else if (id == R.id.navLaporan) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new LaporanFragment()).commit();
-            getSupportActionBar().setTitle("Laporan");
-        } else if (id == R.id.navLogout) {
-            new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Logout Seasson")
-                    .setMessage("Apakash Anda Yakin ingin Logout?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                            startActivity(i);
-                            finish();
-                        }
 
-                    })
-                    .setNegativeButton("No", null)
-                    .show();
+        } else if (id == R.id.navTransaksi) {
+
+        } else if (id == R.id.navLaporan) {
+
+        } else if (id == R.id.navLogout) {
+
         } else if (id == R.id.navContactUs) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new KontakFragment()).commit();
-            getSupportActionBar().setTitle("Hubungi Kami");
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

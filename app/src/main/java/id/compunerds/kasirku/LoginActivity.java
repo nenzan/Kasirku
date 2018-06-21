@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail;
     EditText etPassword;
-    Button btnLogin;
+    CardView btnLogin;
     Button btnRegister;
     Button btnTest;
     ProgressDialog loading;
@@ -48,39 +49,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
-        btnLogin = (Button) findViewById(R.id.loginButton);
-        etEmail = (EditText) findViewById(R.id.inputEmail);
-        etPassword = (EditText) findViewById(R.id.inputPassword);
-        btnTest = (Button) findViewById(R.id.testButton);
-
-        final Call<ResponseBody> result = mApiService.getResultAsJSON();
+        btnLogin = (CardView) findViewById(R.id.loginButton);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                requestLogin();
-            }
-        });
-
-        btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                result.enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        try {
-                            Toast.makeText(LoginActivity.this," response version "+response.body().string(),Toast.LENGTH_SHORT).show();
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
+                Toast.makeText(mContext, "Test Login Button", Toast.LENGTH_SHORT).show();
+                //loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                //requestLogin();
             }
         });
 
@@ -100,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // akan diparsing ke activity selanjutnya.
                                     Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
                                     //String nama = jsonRESULTS.getJSONObject("row").getString("username");
-                                    Intent intent = new Intent(mContext, HomeActivity.class);
+                                    Intent intent = new Intent(mContext, MainActivity.class);
                                     //intent.putExtra("result_nama", nama);
                                     startActivity(intent);
                                     finish();
