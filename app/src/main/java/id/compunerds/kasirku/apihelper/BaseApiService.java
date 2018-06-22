@@ -1,6 +1,7 @@
 package id.compunerds.kasirku.apihelper;
 
 
+import id.compunerds.kasirku.data.Value;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -14,4 +15,7 @@ public interface BaseApiService {
     Call<ResponseBody> loginRequest(@Field("email") String email,
                                     @Field("password") String password);
 
+
+    @GET("barang.php")
+    Call<Value> view();
 }

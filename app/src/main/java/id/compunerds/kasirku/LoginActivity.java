@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEmail;
     EditText etPassword;
     CardView btnLogin;
-    Button btnRegister;
+    TextView btnRegister;
     Button btnTest;
     ProgressDialog loading;
 
@@ -44,19 +45,19 @@ public class LoginActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getAPIService();
         init();
-
-
     }
 
     private void init() {
         btnLogin = (CardView) findViewById(R.id.loginButton);
+        etEmail = (EditText) findViewById(R.id.emailInput);
+        etPassword = (EditText) findViewById(R.id.passwordInput);
+        btnRegister = (TextView) findViewById(R.id.registerButton);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Test Login Button", Toast.LENGTH_SHORT).show();
-                //loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                //requestLogin();
+                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                requestLogin();
             }
         });
 

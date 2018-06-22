@@ -10,5 +10,11 @@
     <color name="blueGray">#ccd0d7</color>
     <color name="accentOrange">#e89a50</color>
     <color name="accentOrangeDark">#e86c2e</color>
+
+    <color name="list_divider">#d9d9d9</color>
+    <color name="list_row_start_color">#ffffff</color>
+    <color name="list_row_end_color">#ffffff</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
     
 </resources>

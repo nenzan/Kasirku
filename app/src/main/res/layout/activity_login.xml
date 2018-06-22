@@ -46,19 +46,19 @@
 
     <EditText
         android:id="@+id/emailInput"
-        android:layout_width="200dp"
+        android:layout_width="255dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
+        android:drawableLeft="@drawable/ic_email"
         android:ems="10"
         android:hint="@string/usernameHint"
-        android:inputType="textEmailAddress"
-        android:drawableLeft="@drawable/ic_email"/>
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="200dp"
+        android:layout_width="255dp"
         android:layout_height="50dp"
         android:layout_below="@+id/emailInput"
         android:layout_centerHorizontal="true"
@@ -77,5 +77,16 @@
         android:textColor="@color/accentOrange"
         android:textAllCaps="true"
         android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="62dp"
+        android:text="Belum Punya Akun? Daftar Disini!"
+        android:textColor="#004444"
+        android:clickable="true"/>
 
 </RelativeLayout>
