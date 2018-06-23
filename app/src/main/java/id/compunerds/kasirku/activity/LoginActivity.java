@@ -1,4 +1,4 @@
-package id.compunerds.kasirku;
+package id.compunerds.kasirku.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import id.compunerds.kasirku.R;
 import id.compunerds.kasirku.apihelper.BaseApiService;
 import id.compunerds.kasirku.apihelper.UtilsApi;
 import okhttp3.ResponseBody;
@@ -72,19 +73,17 @@ public class LoginActivity extends AppCompatActivity {
                             loading.dismiss();
                             try {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                if (jsonRESULTS.getString("error").equals("false")){
+                                if (jsonRESULTS.getString("success").equals("1")){
                                     // Jika login berhasil maka data nama yang ada di response API
-                                    // akan diparsing ke activity selanjutnya.
-                                    Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
-                                    //String nama = jsonRESULTS.getJSONObject("row").getString("username");
+                                    String message = jsonRESULTS.getString("message");
+                                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(mContext, MainActivity.class);
-                                    //intent.putExtra("result_nama", nama);
                                     startActivity(intent);
                                     finish();
                                 } else {
                                     // Jika login gagal
-                                    String error_message = jsonRESULTS.getString("error_msg");
-                                    Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+                                    String message = jsonRESULTS.getString("message");
+                                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
