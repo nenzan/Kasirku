@@ -1,12 +1,16 @@
 package id.compunerds.kasirku.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,11 +44,17 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.tvHargaJualBarangDetail)
     TextView tvHargaJualBarangDetail;
 
-    Button btnHapus;
+    Button btnHapus, btnEdit;
 
     String mNama, mStok, mKode, mHargaDasar, mHargaJual;
     Context mContext;
     BaseApiService mApiService;
+
+    AlertDialog.Builder dialog;
+    LayoutInflater inflater;
+    View dialogView;
+
+    EditText txtNamaBarang, txtStokBarang, txtKodeBarang, txtHargaDasar, txtHargaJual;
 
     public String[] mColors = {
             "#39add1", // light blue
@@ -71,6 +81,7 @@ public class DetailActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
 
         btnHapus = (Button) findViewById(R.id.btnHapusBarang);
+        btnEdit = (Button) findViewById(R.id.btnEditBarang);
 
         Intent intent = getIntent();
         mNama = intent.getStringExtra("KEY_NAMA");
@@ -93,9 +104,102 @@ public class DetailActivity extends AppCompatActivity {
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteBarang();
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("Anda Yakin akan menghapus barang?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                deleteBarang();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogEditForm("", "", "", "", "", "Update");
+
+            }
+        });
+    }
+
+    private void DialogEditForm(String namaEdit, String stokEdit, String kodeEdit, String hDasarEdit, String hJualEdit, String update) {
+        dialog = new AlertDialog.Builder(DetailActivity .this);
+        inflater = getLayoutInflater();
+        dialogView = inflater.inflate(R.layout.form_barang, null);
+        dialog.setView(dialogView);
+        dialog.setCancelable(true);
+        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setTitle("Form Barang");
+
+        txtNamaBarang   = (EditText) dialogView.findViewById(R.id.txtNamaBarang);
+        txtStokBarang   = (EditText) dialogView.findViewById(R.id.txtStokBarang);
+        txtKodeBarang   = (EditText) dialogView.findViewById(R.id.txtKodeBarang);
+        txtHargaDasar   = (EditText) dialogView.findViewById(R.id.txtHargaDasar);
+        txtHargaJual    = (EditText) dialogView.findViewById(R.id.txtHargaJual);
+
+        if (!txtNamaBarang.equals("")){
+            txtNamaBarang.setText(mNama);
+            txtStokBarang.setText(mStok);
+            txtKodeBarang.setText(mKode);
+            txtHargaDasar.setText(mHargaDasar);
+            txtHargaJual.setText(mHargaJual);
+
+        } else {
+            kosong();
+        }
+
+        dialog.setPositiveButton(update, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String namaBarang = txtNamaBarang.getText().toString();
+                String stokBarang = txtStokBarang.getText().toString();
+                String kodeBarang = txtKodeBarang.getText().toString();
+                String hargaDasarBarang = txtHargaDasar.getText().toString();
+                String hargaJualBarang = txtHargaJual.getText().toString();
+
+                mApiService.updateBarang(namaBarang, stokBarang, kodeBarang, hargaDasarBarang, hargaJualBarang)
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()){
+                                    Toast.makeText(mContext, "Berhasil Merubah Data Barang", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(mContext, "Gagal Merubah Data Barang", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(mContext, "Gagal Merubah Data Barang", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("BATAL", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                kosong();
+            }
+        });
+
+        dialog.show();
+
     }
 
     @Override
@@ -136,4 +240,13 @@ public class DetailActivity extends AppCompatActivity {
 
         return colorAsInt;
     }
+
+    private void kosong() {
+        txtNamaBarang.setText(null);
+        txtStokBarang.setText(null);
+        txtKodeBarang.setText(null);
+        txtHargaDasar.setText(null);
+        txtHargaJual.setText(null);
+    }
+
 }

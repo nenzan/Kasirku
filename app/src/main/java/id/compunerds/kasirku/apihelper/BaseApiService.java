@@ -33,4 +33,13 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("barangdel.php")
     Call<ResponseBody> deleteBarang(@Field("kode") String kode);
+
+    @FormUrlEncoded
+    @POST("barangupdate.php")
+    Call<ResponseBody> updateBarang(@Field("nama") String nama,
+                                    @Field("stok") String stok,
+                                    @Field("kode") String kode,
+                                    @Field("harga_dasar") String harga_dasar,
+                                    @Field("harga_jual") String harga_jual
+                                    );
 }

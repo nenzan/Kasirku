@@ -53,7 +53,7 @@ public class DatabaseActivity extends AppCompatActivity {
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
-    EditText txtNamaBarang, txtStokBarang, txtKodeBarang, txtHargaDasar, txtHargaJual, txtKode;
+    EditText txtNamaBarang, txtStokBarang, txtKodeBarang, txtHargaDasar, txtHargaJual;
 
 
     @Override
@@ -152,7 +152,7 @@ public class DatabaseActivity extends AppCompatActivity {
         dialog.setView(dialogView);
         dialog.setCancelable(true);
         dialog.setIcon(R.mipmap.ic_launcher);
-        dialog.setTitle("Form Biodata");
+        dialog.setTitle("Form Barang");
 
         txtNamaBarang   = (EditText) dialogView.findViewById(R.id.txtNamaBarang);
         txtStokBarang   = (EditText) dialogView.findViewById(R.id.txtStokBarang);
