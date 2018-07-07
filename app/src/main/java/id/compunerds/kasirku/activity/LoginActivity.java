@@ -21,6 +21,7 @@ import java.io.IOException;
 import id.compunerds.kasirku.R;
 import id.compunerds.kasirku.apihelper.BaseApiService;
 import id.compunerds.kasirku.apihelper.UtilsApi;
+import id.compunerds.kasirku.view.dashboard.DashboardActivity;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // Jika login berhasil maka data nama yang ada di response API
                                     String message = jsonRESULTS.getString("message");
                                     Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(mContext, MainActivity.class);
+                                    Intent intent = new Intent(mContext, DashboardActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {

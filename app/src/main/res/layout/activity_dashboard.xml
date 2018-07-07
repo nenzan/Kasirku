@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.dashboard.DashboardActivity">
+
+    <FrameLayout
+        android:id="@+id/fLDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:baselineAligned="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnDashboardTransaksi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bluePrimary"
+            android:src="@drawable/ic_cash" />
+
+        <ImageButton
+            android:id="@+id/btnDashboardBarang"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bluePrimary"
+            android:src="@drawable/ic_trolley" />
+
+        <ImageButton
+            android:id="@+id/btnDashboardReports"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bluePrimary"
+            android:src="@drawable/ic_reports"/>
+
+        <ImageButton
+            android:id="@+id/btnDashboardSettings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bluePrimary"
+            android:src="@drawable/ic_settings"/>
+
+        <ImageButton
+            android:id="@+id/btnDashboardCS"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bluePrimary"
+            android:src="@drawable/ic_customer_service" />
+
+    </LinearLayout>
+
+</LinearLayout>

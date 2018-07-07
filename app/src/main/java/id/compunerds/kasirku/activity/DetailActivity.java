@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import id.compunerds.kasirku.R;
 import id.compunerds.kasirku.apihelper.BaseApiService;
 import id.compunerds.kasirku.apihelper.UtilsApi;
+import id.compunerds.kasirku.view.barang.BarangFragment;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -213,7 +214,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(mContext, "Berhasil menghapus barang", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(mContext, DatabaseActivity.class)
+                    startActivity(new Intent(mContext, BarangFragment.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     finish();
                 }else {

@@ -1,6 +1,7 @@
 package id.compunerds.kasirku.apihelper;
 
 import id.compunerds.kasirku.model.ResponseBarang;
+import id.compunerds.kasirku.model.ResponsePrint;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
@@ -42,4 +43,7 @@ public interface BaseApiService {
                                     @Field("harga_dasar") String harga_dasar,
                                     @Field("harga_jual") String harga_jual
                                     );
+
+    @GET("print.php")
+    Call<ResponsePrint> getPrint();
 }
