@@ -17,14 +17,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import butterknife.ButterKnife;
 import id.compunerds.kasirku.R;
@@ -43,7 +50,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 
-public class BarangFragment extends Fragment {
+public class BarangFragment extends Fragment{
 
     RecyclerView recyclerView;
     SwipeRefreshLayout mSwipeRefresh;
@@ -65,6 +72,12 @@ public class BarangFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = getActivity();
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +116,11 @@ public class BarangFragment extends Fragment {
             }
         });
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
     private void getResultListBarang() {
         mApiService.getSemuaBarang().enqueue(new Callback<ResponseBarang>() {
@@ -139,13 +157,13 @@ public class BarangFragment extends Fragment {
                         String hDasarDetail = results.get(position).getHargaDasar();
                         String hJualDetail = results.get(position).getHargaJual();
 
-                        Intent detailBarang = new Intent(mContext, BarangDetailFragment.class);
+                        Intent detailBarang = new Intent(getActivity().getBaseContext(), BarangDetailFragment.class);
                         detailBarang.putExtra("KEY_NAMA", namaDetail);
                         detailBarang.putExtra("KEY_STOK", stokDetail);
                         detailBarang.putExtra("KEY_KODE", kodeDetail);
                         detailBarang.putExtra("KEY_HARGA_DASAR", hDasarDetail);
                         detailBarang.putExtra("KEY_HARGA_JUAL", hJualDetail);
-                        startActivity(detailBarang);
+                        view.getContext().startActivity(detailBarang);
                     }
                 })
         );
@@ -237,4 +255,5 @@ public class BarangFragment extends Fragment {
         txtHargaDasar.setText(null);
         txtHargaJual.setText(null);
     }
+
 }

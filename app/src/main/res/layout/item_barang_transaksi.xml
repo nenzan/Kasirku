@@ -81,32 +81,6 @@
                         android:layout_marginTop="6dp"
                         android:textSize="12sp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="Kode Barang"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/tvKodeBarang"
-                        android:layout_marginTop="6dp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="12sp"
-                        android:fontFamily="sans-serif-light"
-                        android:text="A0001"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="6dp"
-                        android:textSize="12sp"
-                        android:fontFamily="sans-serif-condensed"
                         android:text="Harga Jual"
                         android:textStyle="bold"/>
 
@@ -118,7 +92,7 @@
                         android:layout_weight="1"
                         android:textSize="12sp"
                         android:fontFamily="sans-serif-light"
-                        android:text="12000"/>
+                        android:text="Rp. 12000"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

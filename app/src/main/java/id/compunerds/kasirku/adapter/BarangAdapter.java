@@ -7,11 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +26,7 @@ import id.compunerds.kasirku.model.ResponseBarang;
 public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.BarangHolder>{
 
     List<ResponseBarang.Result> resultList;
+    List<ResponseBarang.Result> results = new ArrayList<>();
     Context mContext;
 
     public String[] mColors = {
@@ -44,6 +48,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.BarangHold
     public BarangAdapter(Context context, List<ResponseBarang.Result> barangList){
         this.mContext = context;
         resultList = barangList;
+        results = resultList;
     }
 
     @NonNull
@@ -74,6 +79,9 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.BarangHold
     public int getItemCount() {
         return resultList.size();
     }
+
+
+
 
     public class BarangHolder extends RecyclerView.ViewHolder {
 

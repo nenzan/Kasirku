@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.passwordInput);
         btnRegister = (TextView) findViewById(R.id.registerButton);
 
+        etEmail.setText("sistecdummy@gmail.com");
+        etPassword.setText("admin321");
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
