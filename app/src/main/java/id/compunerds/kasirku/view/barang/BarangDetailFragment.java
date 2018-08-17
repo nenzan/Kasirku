@@ -52,12 +52,16 @@ public class BarangDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_barang_detail, container, false);
 
-        String kode = getArguments().getString("KEY_KODE");
-        String stok = getArguments().getString("KEY_STOK");
-        String hdasar = getArguments().getString("KEY_HARGA_DASAR");
-        String hjual = getArguments().getString("KEY_HARGA_JUAL");
-        Toast.makeText(getActivity(), "Kode :" + kode + ", Stok :" + stok +
-                ", Harga Dasar :" + hdasar + ", Harga Jual:" + hjual, Toast.LENGTH_SHORT).show();
+        if (this.getArguments() != null) {
+            String kode = getArguments().getString("KEY_KODE");
+            String stok = getArguments().getString("KEY_STOK");
+            String hdasar = getArguments().getString("KEY_HARGA_DASAR");
+            String hjual = getArguments().getString("KEY_HARGA_JUAL");
+            Toast.makeText(getActivity(), "Kode :" + kode + ", Stok :" + stok +
+                    ", Harga Dasar :" + hdasar + ", Harga Jual:" + hjual, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Stream Data Kosong", Toast.LENGTH_SHORT).show();
+        }
 
 
 //        tvNamaBarangDetail.setText(kode);
