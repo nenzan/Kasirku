@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -157,13 +158,17 @@ public class BarangFragment extends Fragment{
                         String hDasarDetail = results.get(position).getHargaDasar();
                         String hJualDetail = results.get(position).getHargaJual();
 
-                        Intent detailBarang = new Intent(getActivity().getBaseContext(), BarangDetailFragment.class);
-                        detailBarang.putExtra("KEY_NAMA", namaDetail);
-                        detailBarang.putExtra("KEY_STOK", stokDetail);
-                        detailBarang.putExtra("KEY_KODE", kodeDetail);
-                        detailBarang.putExtra("KEY_HARGA_DASAR", hDasarDetail);
-                        detailBarang.putExtra("KEY_HARGA_JUAL", hJualDetail);
-                        view.getContext().startActivity(detailBarang);
+                        BarangDetailFragment fragment = new BarangDetailFragment();
+                        Bundle args = new Bundle();
+
+                        args.putString("KEY_NAMA", namaDetail);
+                        args.putString("KEY_STOK", stokDetail);
+                        args.putString("KEY_KODE", kodeDetail);
+                        args.putString("KEY_HARGA_DASAR", hDasarDetail);
+                        args.putString("KEY_HARGA_JUAL", hJualDetail);
+                        fragment.setArguments(args);
+                        getFragmentManager().beginTransaction().add(R.id.fLDashboard, fragment).commit();
+
                     }
                 })
         );
